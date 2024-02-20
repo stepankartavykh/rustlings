@@ -4,15 +4,19 @@
 //
 // Execute `rustlings hint move_semantics6` or use the `hint` watch subcommand
 // for a hint.
-
-// I AM NOT DONE
+// fn print
 
 fn main() {
+    println!("=========================");
+
     let data = "Rust is great!".to_string();
+    // data.push_str("qwe");
+    let c = get_char(&data);
+    println!("{}", c);
 
-    get_char(&data);
+    string_uppercase(data);
 
-    string_uppercase(&data);
+    println!("=========================");
 }
 
 // Should not take ownership
@@ -21,8 +25,8 @@ fn get_char(data: &String) -> char {
 }
 
 // Should take ownership
-fn string_uppercase(mut data: &String) {
-    data = &data.to_uppercase();
+fn string_uppercase(mut data: String) {
+    data = data.to_uppercase();
 
     println!("{}", data);
 }
