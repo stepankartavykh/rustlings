@@ -7,17 +7,36 @@
 
 fn trim_me(input: &str) -> String {
     // TODO: Remove whitespace from both ends of a string!
-    ???
+    // for i in input.len()
+    let mut start_index: usize = 0;
+    
+    for c in input.chars() {
+        if c != ' ' {
+            break;
+        }
+        start_index += 1;
+    }
+    let length = input.len();
+    let mut end_index: usize = length;
+    for (_ind, c) in input.char_indices().rev() {
+        if c != ' ' {
+            break;
+        }
+        println!("end_index = {end_index}");
+        end_index -= 1;
+    }
+    println!("start = {}, end = {}", start_index, end_index);
+    input[start_index..end_index].to_string()
 }
 
 fn compose_me(input: &str) -> String {
     // TODO: Add " world!" to the string! There's multiple ways to do this!
-    ???
+    format!("{}{}", input, " world!").to_string()
 }
 
 fn replace_me(input: &str) -> String {
     // TODO: Replace "cars" in the string with "balloons"!
-    ???
+    "qwe".to_string()
 }
 
 #[cfg(test)]
