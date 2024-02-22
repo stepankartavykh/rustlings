@@ -3,8 +3,6 @@
 // Execute `rustlings hint strings3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 fn trim_me(input: &str) -> String {
     // TODO: Remove whitespace from both ends of a string!
     // for i in input.len()
@@ -25,7 +23,7 @@ fn trim_me(input: &str) -> String {
         println!("end_index = {end_index}");
         end_index -= 1;
     }
-    println!("start = {}, end = {}", start_index, end_index);
+    // println!("start = {}, end = {}", start_index, end_index);
     input[start_index..end_index].to_string()
 }
 
@@ -36,7 +34,8 @@ fn compose_me(input: &str) -> String {
 
 fn replace_me(input: &str) -> String {
     // TODO: Replace "cars" in the string with "balloons"!
-    "qwe".to_string()
+    let new_input = input.replace("cars", "balloons");
+    new_input
 }
 
 #[cfg(test)]
