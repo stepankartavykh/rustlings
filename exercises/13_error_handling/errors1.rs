@@ -9,20 +9,51 @@
 // Execute `rustlings hint errors1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
-pub fn generate_nametag_text(name: String) -> Option<String> {
+pub fn generate_nametag_text(name: String) -> Result<String, String> {
     if name.is_empty() {
         // Empty names aren't allowed.
-        None
+        Err("`name` was empty; it must be nonempty.".to_string())
     } else {
-        Some(format!("Hi! My name is {}", name))
+        Ok(format!("Hi! My name is {}", name))
+    }
+}
+
+enum MuOwnOption<T> {
+    None,
+    Some(T),
+}
+
+fn divide(a: f64, b: f64) -> Option<f64> {
+    if a == 0.0 {
+        None
+    }
+    else {
+        Some(a / b)
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn test_some_code() {
+        assert_eq!(0, 0);
+        let result = divide(2.0, 0.0);
+
+        match result {
+            Some(x) => println!("result: {x}"),
+            None => println!("Cannot divide by 0"),
+        }
+
+        let s = String::from("123");
+        println!("============{}=================", s.is_empty());
+
+        let s = "1234".into();
+        let res = generate_nametag_text(s);
+        println!("{:?}", res);
+        // assert_eq!(s, Some(String::from("1234")));
+    }
 
     #[test]
     fn generates_nametag_text_for_a_nonempty_name() {
