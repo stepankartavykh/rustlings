@@ -9,7 +9,7 @@
 
 use std::num::ParseIntError;
 
-fn main() {
+fn main() -> Result<(), ParseIntError> {
     let mut tokens = 100;
     let pretend_user_input = "8a";
 
@@ -27,6 +27,13 @@ fn main() {
             println!("give me number in string instead of number with symbols!");
         }
     }
+
+    Ok(())
+}
+
+enum MyOwnResult<T, E> {
+    Ok(T),
+    Err(E)
 }
 
 pub fn total_cost(item_quantity: &str) -> Result<i32, ParseIntError> {
